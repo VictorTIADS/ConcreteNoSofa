@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ConcreteNoSofa</string>
+    <string name="celcius">ºC</string>
 </resources>

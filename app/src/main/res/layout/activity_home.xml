@@ -4,15 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDay"
     tools:context=".ui.HomeActivity">
 
     <TextView
+        android:id="@+id/homeTitleWelcome"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginStart="@dimen/space_m"
+        android:layout_marginTop="@dimen/space_m"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="bom dia" />
+
+    <TextView
+        android:id="@+id/homeSubTitleDate"
+        style="@style/TextSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/homeTitleWelcome"
+        app:layout_constraintTop_toBottomOf="@id/homeTitleWelcome"
+        tools:text="2 de janeiro de 2020" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/homeIconWeather"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="44dp"
+        android:visibility="gone"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeSubTitleDate"
+        app:srcCompat="@drawable/ic_open_day" />
+
+    <LinearLayout
+        android:id="@+id/homeContainerCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_m"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/space_m"
+        android:background="@drawable/container_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeIconWeather">
+
+        <TextView
+            android:id="@+id/homeCityName"
+            style="@style/TextTitleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="recife" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/homeWeatherSubtitle"
+        style="@style/TextSubtitle"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_m"
+        android:layout_marginTop="@dimen/space_pp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeContainerCity"
+        tools:text="pouco nublado" />
+
+    <TextView
+        android:id="@+id/homeWeatherTemp"
+        style="@style/TextWeatherTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_m"
+        android:layout_marginTop="@dimen/space_g_g"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/space_m"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeContainerCity"
+        tools:text="74" />
+
+    <TextView
+        android:id="@+id/homeWeatherFormat"
+        style="@style/TextWeatherTempFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/space_m"
+        app:layout_constraintStart_toEndOf="@id/homeWeatherTemp"
+        app:layout_constraintTop_toTopOf="@id/homeWeatherTemp"
+        android:text="@string/celcius" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 class RetrofitConfig {
 
     companion object{
-        var BASE_URL = "https://api.magicthegathering.io/v1/"
+        var BASE_URL = "https://api.openweathermap.org/data/2.5/"
     }
 
     val okHttpClient = OkHttpClient.Builder()
