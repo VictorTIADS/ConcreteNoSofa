@@ -5,18 +5,18 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ralewaylight</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="TextTitle">
-        <item name="android:textSize">48sp</item>
+        <item name="android:textSize">34sp</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <style name="TextSubtitle" >
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
@@ -40,6 +40,12 @@
         <item name="android:textSize">72sp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ralewaylight</item>
+    </style>
+
+    <style name="TextError">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
 </resources>

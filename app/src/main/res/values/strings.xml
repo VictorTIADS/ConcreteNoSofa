@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ConcreteNoSofa</string>
     <string name="celcius">ºC</string>
+    <string name="home_salutation_morning">Bom Dia</string>
+    <string name="home_salutation_evening">Boa Tarde</string>
+    <string name="home_salutation_night">Boa Noite</string>
+    <string name="home_message_error">Ops! Desculpe, Tivemos um problema \nTente novamente</string>
+    <string name="try_again">Tentar novamente</string>
 </resources>

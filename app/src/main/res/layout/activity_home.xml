@@ -2,52 +2,140 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundDay"
     tools:context=".ui.HomeActivity">
 
-    <TextView
-        android:id="@+id/homeTitleWelcome"
-        style="@style/TextTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_m"
-        android:layout_marginTop="@dimen/space_m"
+    <LinearLayout
+        android:id="@+id/homeContainerLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="bom dia" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/homeSubTitleDate"
-        style="@style/TextSubtitle"
-        android:layout_width="wrap_content"
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/homecontainerError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_g_g"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/ic_face_emoji" />
+
+            <TextView
+                style="@style/TextError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_m"
+                android:text="@string/home_message_error" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/homeButtonTryAgain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/space_m"
+                android:layout_marginEnd="@dimen/space_m"
+                android:layout_marginBottom="@dimen/space_pp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/ralewaybold"
+                android:paddingStart="@dimen/space_m"
+                android:paddingEnd="@dimen/space_m"
+                android:text="@string/try_again"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBackgroundNight"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/homeContainerWelcome"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/homeTitleWelcome"
-        app:layout_constraintTop_toBottomOf="@id/homeTitleWelcome"
-        tools:text="2 de janeiro de 2020" />
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/homeTitleWelcome"
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_m"
+            android:layout_marginTop="@dimen/space_m"
+            tools:text="bom dia" />
+
+        <TextView
+            android:id="@+id/homeSubTitleDate"
+            style="@style/TextSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_m"
+            tools:text="2 de janeiro de 2020" />
+    </LinearLayout>
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/homeIconWeather"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginStart="44dp"
-        android:visibility="gone"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="44dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeSubTitleDate"
-        app:srcCompat="@drawable/ic_open_day" />
+        app:layout_constraintTop_toBottomOf="@id/homeContainerWelcome"
+        app:srcCompat="@drawable/ic_01d" />
 
     <LinearLayout
         android:id="@+id/homeContainerCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_m"
-        android:visibility="gone"
         android:layout_marginTop="@dimen/space_m"
         android:background="@drawable/container_background"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeIconWeather">
 
@@ -62,11 +150,11 @@
     <TextView
         android:id="@+id/homeWeatherSubtitle"
         style="@style/TextSubtitle"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_m"
         android:layout_marginTop="@dimen/space_pp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeContainerCity"
         tools:text="pouco nublado" />
@@ -78,11 +166,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_m"
         android:layout_marginTop="@dimen/space_g_g"
-        android:visibility="gone"
         android:layout_marginBottom="@dimen/space_m"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeContainerCity"
+        app:layout_constraintTop_toTopOf="@id/homeContainerCity"
+        app:layout_goneMarginBottom="@dimen/space_g"
         tools:text="74" />
 
     <TextView
@@ -90,11 +179,11 @@
         style="@style/TextWeatherTempFormat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_g_m"
+        android:text="@string/celcius"
         android:visibility="gone"
-        android:layout_marginTop="@dimen/space_m"
         app:layout_constraintStart_toEndOf="@id/homeWeatherTemp"
-        app:layout_constraintTop_toTopOf="@id/homeWeatherTemp"
-        android:text="@string/celcius" />
+        app:layout_constraintTop_toTopOf="@id/homeWeatherTemp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,10 @@ class RetrofitConfig {
     }
 
     val okHttpClient = OkHttpClient.Builder()
-        .readTimeout(40, TimeUnit.SECONDS)
-        .connectTimeout(40, TimeUnit.SECONDS)
+        .readTimeout(10, TimeUnit.SECONDS)
+        .connectTimeout(10, TimeUnit.SECONDS)
+        .callTimeout(10,TimeUnit.SECONDS)
+        .writeTimeout(10,TimeUnit.SECONDS)
         .build()
 
     private val retrofit = Retrofit.Builder()
