@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setObservable() {
-        viewModel.weatherInfo.observe(this, Observer {
+        viewModel.weatherInfoObsevable.observe(this, Observer {
             when(it){
                 is Loading -> {
                     showLoading()
@@ -47,14 +47,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupError() {
-        homecontainerError.fadeIn()
+        homeContainerError.fadeIn()
         homeButtonTryAgain.setOnClickListener {
             errorRetry()
         }
     }
 
     private fun errorRetry(){
-        homecontainerError.fadeOut()
+        homeContainerError.fadeOut()
         showLoading()
         viewModel.fetchWeatherInfo()
     }
@@ -88,7 +88,6 @@ class HomeActivity : AppCompatActivity() {
     private fun hideLoading() {
         homeContainerLoading.fadeOut()
     }
-
 
     private fun setupWelcomeTexts() {
         val welcomeInfo = viewModel.getWelcomeInfo()
