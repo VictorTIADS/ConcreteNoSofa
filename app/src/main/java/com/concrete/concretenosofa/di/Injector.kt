@@ -12,7 +12,8 @@ fun Application.koinInjector(){
         modules(
             listOf(
                 viewModels,
-                network
+                network,
+                utils
             )
         )
     }

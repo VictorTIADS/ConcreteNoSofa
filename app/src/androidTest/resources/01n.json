@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": -34.88,
+    "lat": -8.05
+  },
+  "weather": [
+    {
+      "id": 802,
+      "main": "Clear",
+      "description": "céu limpo",
+      "icon": "01n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 31,
+    "feels_like": 32.41,
+    "temp_min": 31,
+    "temp_max": 31,
+    "pressure": 1013,
+    "humidity": 66
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 6.2,
+    "deg": 150
+  },
+  "clouds": {
+    "all": 40
+  },
+  "dt": 1588179573,
+  "sys": {
+    "type": 1,
+    "id": 8426,
+    "country": "BR",
+    "sunrise": 1588148502,
+    "sunset": 1588191102
+  },
+  "timezone": -10800,
+  "id": 3390760,
+  "name": "Recife",
+  "cod": 200
+}

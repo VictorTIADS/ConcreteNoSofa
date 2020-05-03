@@ -6,4 +6,16 @@
     <string name="home_salutation_night">Boa Noite</string>
     <string name="home_message_error">Ops! Desculpe, Tivemos um problema \nTente novamente</string>
     <string name="try_again">Tentar novamente</string>
+    <string name="moth_feb">fevereiro</string>
+    <string name="moth_mar">março</string>
+    <string name="moth_apr">abril</string>
+    <string name="moth_may">maio</string>
+    <string name="moth_jun">junho</string>
+    <string name="moth_jul">julho</string>
+    <string name="moth_ago">agosto</string>
+    <string name="moth_sep">setembro</string>
+    <string name="moth_oct">outubro</string>
+    <string name="moth_nov">novembro</string>
+    <string name="moth_dec">dezembro</string>
+    <string name="moth_jan">janeiro</string>
 </resources>

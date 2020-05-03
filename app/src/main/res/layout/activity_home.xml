@@ -157,7 +157,7 @@
         android:layout_marginStart="@dimen/space_m"
         android:layout_marginTop="@dimen/space_pp"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/homeContainerCity"
         app:layout_constraintTop_toBottomOf="@id/homeContainerCity"
         tools:text="pouco nublado" />
 
