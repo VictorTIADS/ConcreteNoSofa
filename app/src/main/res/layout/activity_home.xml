@@ -154,7 +154,7 @@
         style="@style/TextSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_m"
+        android:layout_marginStart="@dimen/space_pp"
         android:layout_marginTop="@dimen/space_pp"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="@id/homeContainerCity"

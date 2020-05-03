@@ -7,13 +7,13 @@
     {
       "id": 802,
       "main": "Clouds",
-      "description": "Poucas nuvens",
+      "description": "algumas nuvens",
       "icon": "02n"
     }
   ],
   "base": "stations",
   "main": {
-    "temp": 31,
+    "temp": 30,
     "feels_like": 32.41,
     "temp_min": 31,
     "temp_max": 31,

@@ -3,7 +3,9 @@ package com.concrete.concretenosofa.home
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import br.com.concretesolutions.kappuccino.utils.doWait
 import com.concrete.concretenosofa.R
+import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_DELAY
 import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_ERROR_REQUEST
+import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_SUCCESS_REQUEST
 import com.concrete.concretenosofa.models.WelcomeInfo
 import com.concrete.concretenosofa.server.MockWebServerRule
 import com.concrete.concretenosofa.utils.*
@@ -49,7 +51,6 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            doWait(5000)
             isWelcomeInfoDisplayed()
         }
     }
@@ -85,7 +86,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(FEW_CLOUDS_DAY_02D)
+            isWeatherStateFewCloudsDay()
 
         }
     }
@@ -97,8 +98,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(FEW_CLOUDS_NIGHT_02N)
-
+            isWeatherStateFewCloudsNight()
         }
     }
 
@@ -109,7 +109,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(SCATTERED_CLOUDS_DAY_3D)
+            isWeatherStateScatteredCloudsDay()
 
         }
     }
@@ -121,7 +121,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(SCATTERED_CLOUDS_NIGHT_3N)
+            isWeatherStateScatteredCloudsNight()
 
         }
     }
@@ -133,7 +133,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(BROKEN_CLOUDS_DAY_4D)
+            isWeatherStateBrokenCloudsDay()
 
         }
     }
@@ -145,7 +145,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(BROKEN_CLOUDS_NIGHT_4N)
+            isWeatherStateBrokenCloudsNight()
 
         }
     }
@@ -157,7 +157,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(SHOWER_RAIN_DAY_9D)
+            isWeatherStateShowerRainDay()
 
         }
     }
@@ -169,7 +169,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(SHOWER_RAIN_NIGHT_9N)
+            isWeatherStateShowerRainNight()
 
         }
     }
@@ -181,7 +181,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(RAIN_DAY_10D)
+            isWeatherStateRainDay()
 
         }
     }
@@ -193,7 +193,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(RAIN_NIGHT_10N)
+            isWeatherStateRainNight()
 
         }
     }
@@ -205,8 +205,7 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(THUNDERSTORM_DAY_11D)
-
+            isWeatherStateThunderstormDay()
         }
     }
 
@@ -217,19 +216,24 @@ class HomeActivityTest {
             launchActivity()
         }
         assert {
-            isWeatherIconCorrect(THUNDERSTORM_NIGHT_11N)
+            isWeatherStateThunderstormNight()
 
         }
     }
 
     @Test
-    fun givenLongTimeRequest_whenFetchData_shouldShowError() {
-
-    }
-
-    @Test
     fun givenErrorScreen_whenClickOnTryAgain_shouldShowWeatherInfo() {
-
+        arrange {
+            mockRequest(WITH_ERROR_REQUEST)
+            launchActivity()
+            mockRequest(WITH_SUCCESS_REQUEST)
+        }
+        act {
+            clickOnTryAgain()
+        }
+        assert {
+            isWeatherStateClearSkyDay()
+        }
     }
 
 }

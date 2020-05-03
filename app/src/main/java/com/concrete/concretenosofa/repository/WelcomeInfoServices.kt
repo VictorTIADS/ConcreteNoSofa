@@ -16,7 +16,7 @@ class WelcomeInfoServices(private val context: Context, private val calendar: Ca
             calendar.get(Calendar.HOUR_OF_DAY) in 5..12 -> {
                 context.getString(R.string.home_salutation_morning)
             }
-            calendar.get(Calendar.HOUR_OF_DAY) < 18 -> {
+            calendar.get(Calendar.HOUR_OF_DAY) in 12..18 -> {
                 context.getString(R.string.home_salutation_evening)
             }
             else -> {

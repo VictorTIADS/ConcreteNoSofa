@@ -1,33 +1,18 @@
 package com.concrete.concretenosofa.repository
 
-import com.concrete.concretenosofa.models.WeatherRequestResponse
+import androidx.lifecycle.MutableLiveData
+import com.concrete.concretenosofa.models.*
 import com.concrete.concretenosofa.network.RetrofitConfig
 import com.concrete.concretenosofa.utils.weatherMock
+import org.koin.core.KoinComponent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ServicesRepository(private val retrofitConfig: RetrofitConfig) {
+class ServicesRepository(private val retrofitConfig: RetrofitConfig) : KoinComponent, Services {
 
-    fun getWeather(
-        onRequestSucces: (data: WeatherRequestResponse) -> Unit,
-        onRequestError: () -> Unit
-    ) {
-        retrofitConfig.retrofitRequest().getWeather()
-            .enqueue(object : Callback<WeatherRequestResponse> {
-                override fun onFailure(call: Call<WeatherRequestResponse>, t: Throwable) {
-                    onRequestError()
-                }
-                override fun onResponse(
-                    call: Call<WeatherRequestResponse>,
-                    response: Response<WeatherRequestResponse>
-                ) {
-                    response.body()?.let {
-                        onRequestSucces(it)
-                    }
-                }
-
-            })
+    override suspend fun getWeatherInfo(): Response<WeatherRequestResponse> {
+        return retrofitConfig.retrofitRequest().getWeather()
     }
 
 }
