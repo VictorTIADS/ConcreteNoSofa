@@ -5,6 +5,9 @@ import androidx.test.core.app.ApplicationProvider
 import br.com.concretesolutions.kappuccino.assertions.VisibilityAssertions.displayed
 import br.com.concretesolutions.kappuccino.actions.ClickActions.click
 import com.concrete.concretenosofa.R
+import com.concrete.concretenosofa.testUtils.MockedJsonReader
+import com.concrete.concretenosofa.testUtils.WITH_DELAY
+import com.concrete.concretenosofa.testUtils.WITH_SUCCESS_REQUEST
 import com.concrete.concretenosofa.ui.HomeActivity
 import com.concrete.concretenosofa.ui.WelcomeInfoServices
 import com.concrete.concretenosofa.utils.*

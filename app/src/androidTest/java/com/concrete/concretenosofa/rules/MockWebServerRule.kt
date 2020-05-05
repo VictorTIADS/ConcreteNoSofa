@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.server
+package com.concrete.concretenosofa.rules
 
 import com.concrete.concretenosofa.network.RetrofitConfig.Companion.BASE_URL
 import okhttp3.mockwebserver.MockResponse

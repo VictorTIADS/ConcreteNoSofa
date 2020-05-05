@@ -29,10 +29,16 @@ class MyTestRunner : AndroidJUnitRunner() {
 
 }
 
-val module = module {
+val testKoinViewmodelModule = module {
     viewModel { HomeViewModel(get()) }
+}
+
+val testKoinNetworkModule = module {
     single { RetrofitConfig() }
     single { ServicesRepository(get()) as Services}
+}
+
+val testKoinUtilsModule = module {
     factory { Calendar.getInstance() }
     factory {
         WelcomeInfoServices(
@@ -50,7 +56,13 @@ class KoinRule() : TestRule {
            override fun evaluate() {
                try {
                    startKoin {
-                       modules(module)
+                       modules(
+                           listOf(
+                               testKoinViewmodelModule,
+                               testKoinNetworkModule,
+                               testKoinUtilsModule
+                           )
+                       )
                    }
                    base?.evaluate()
                } finally {

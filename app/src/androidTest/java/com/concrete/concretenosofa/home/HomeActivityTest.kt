@@ -3,7 +3,8 @@ package com.concrete.concretenosofa.home
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.concrete.concretenosofa.rules.AnimationRule
 import com.concrete.concretenosofa.rules.KoinRule
-import com.concrete.concretenosofa.server.MockWebServerRule
+import com.concrete.concretenosofa.rules.MockWebServerRule
+import com.concrete.concretenosofa.testUtils.*
 import com.concrete.concretenosofa.utils.*
 import org.junit.Rule
 import org.junit.Test
@@ -46,7 +47,9 @@ class HomeActivityTest {
     @Test
     fun givenScreenHasLoaded_whenOpenHomeActivity_shouldShowWelcomeInfo() {
         arrange {
-            mockWelcomeInfo(Calendar.JANUARY, NIGHT_HOUR)
+            mockWelcomeInfo(Calendar.JANUARY,
+                NIGHT_HOUR
+            )
             mockRequest()
             launchActivity()
         }
@@ -134,7 +137,6 @@ class HomeActivityTest {
         }
         assert {
             isWeatherStateBrokenCloudsDay()
-
         }
     }
 

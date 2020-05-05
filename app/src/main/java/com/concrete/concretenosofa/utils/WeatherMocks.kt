@@ -1,6 +1,5 @@
 package com.concrete.concretenosofa.utils
 
-import android.view.inputmethod.CorrectionInfo
 import com.concrete.concretenosofa.models.*
 
 private val coord = CoordResponse(1.0, 1.0)

@@ -2,7 +2,6 @@ package com.concrete.concretenosofa.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.concrete.concretenosofa.models.*
-import com.concrete.concretenosofa.network.RetrofitConfig
 import com.concrete.concretenosofa.repository.ServicesRepository
 import com.concrete.concretenosofa.rules.CoroutineTestRule
 import com.concrete.concretenosofa.utils.weatherMock

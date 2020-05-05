@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.utils
+package com.concrete.concretenosofa.testUtils
 
 const val WITH_SUCCESS_REQUEST = 200
 const val WITH_ERROR_REQUEST = 404
