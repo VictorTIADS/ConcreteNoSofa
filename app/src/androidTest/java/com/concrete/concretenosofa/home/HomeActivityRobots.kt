@@ -5,6 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import br.com.concretesolutions.kappuccino.assertions.VisibilityAssertions.displayed
 import br.com.concretesolutions.kappuccino.actions.ClickActions.click
 import com.concrete.concretenosofa.R
+import com.concrete.concretenosofa.testUtils.MORNING_TIME
 import com.concrete.concretenosofa.testUtils.MockedJsonReader
 import com.concrete.concretenosofa.testUtils.WITH_DELAY
 import com.concrete.concretenosofa.testUtils.WITH_SUCCESS_REQUEST
@@ -36,7 +37,7 @@ class HomeActivityArrange(val mockWebServer: MockWebServer) : KoinComponent {
         ActivityScenario.launch(HomeActivity::class.java)
     }
 
-    fun mockWelcomeInfo(month: Int, hour: Int){
+    fun mockWelcomeInfo(hour: Int = MORNING_TIME, month: Int = Calendar.JANUARY){
         val calendar = Calendar.getInstance()
         calendar.set(2020, month,1, hour,1)
         loadKoinModules(
@@ -106,10 +107,51 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWelcomeInfoDisplayed() {
+    fun isLongDateDisplayedWithMonth(month: String){
         displayed {
-            id(R.id.homeTitleWelcome)
-            id(R.id.homeSubTitleDate)
+            allOf {
+                id(R.id.homeSubTitleDate)
+                text("1 de $month de 2020")
+            }
+        }
+    }
+
+    fun isGoodEveningDisplayed() {
+        displayed {
+            allOf {
+                id(R.id.homeTitleWelcome)
+                text("Boa Tarde")
+            }
+        }
+    }
+
+    fun isGoodNightDisplayed() {
+        displayed {
+            allOf {
+                id(R.id.homeTitleWelcome)
+                text("Boa Noite")
+            }
+        }
+    }
+
+    fun isGoodMorningDisplay(){
+        displayed {
+            allOf {
+                id(R.id.homeTitleWelcome)
+                text("Bom Dia")
+            }
+        }
+    }
+
+    fun isDayBrackgroundDisplayed(){
+        displayed {
+            background(R.color.colorBackgroundDay)
+        }
+    }
+
+    fun isNightBrackgroundDisplayed(){
+        displayed {
+            background(R.color.colorBackgroundNight)
         }
     }
 
