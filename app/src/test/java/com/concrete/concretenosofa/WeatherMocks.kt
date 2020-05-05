@@ -1,7 +1,6 @@
 package com.concrete.concretenosofa
 
 import com.concrete.concretenosofa.models.*
-import io.mockk.every
 import retrofit2.Response
 
 private val coord = CoordResponse(1.0, 1.0)

@@ -10,9 +10,6 @@ import com.concrete.concretenosofa.repository.ServicesRepository
 import com.concrete.concretenosofa.rules.CoroutineTestRule
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Rule
