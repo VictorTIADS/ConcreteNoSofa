@@ -1,21 +1,14 @@
 package com.concrete.concretenosofa.home
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import br.com.concretesolutions.kappuccino.utils.doWait
-import com.concrete.concretenosofa.R
-import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_DELAY
-import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_ERROR_REQUEST
-import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_SUCCESS_REQUEST
-import com.concrete.concretenosofa.models.WelcomeInfo
+import com.concrete.concretenosofa.rules.AnimationRule
+import com.concrete.concretenosofa.rules.KoinRule
 import com.concrete.concretenosofa.server.MockWebServerRule
 import com.concrete.concretenosofa.utils.*
-import io.mockk.every
-import io.mockk.mockkClass
-import io.mockk.mockkConstructor
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest {
@@ -25,6 +18,9 @@ class HomeActivityTest {
 
     @get:Rule
     val animationRule = AnimationRule()
+
+    @get:Rule
+    val koinRule = KoinRule()
 
     @Test
     fun givenScreenIsLoading_whenOpenHomeActivity_shouldShowLoading() {
@@ -50,6 +46,7 @@ class HomeActivityTest {
     @Test
     fun givenScreenHasLoaded_whenOpenHomeActivity_shouldShowWelcomeInfo() {
         arrange {
+            mockWelcomeInfo(Calendar.JANUARY, NIGHT_HOUR)
             mockRequest()
             launchActivity()
         }

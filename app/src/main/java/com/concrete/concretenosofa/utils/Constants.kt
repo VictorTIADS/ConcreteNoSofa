@@ -14,3 +14,8 @@ const val RAIN_DAY_10D = "10d"
 const val RAIN_NIGHT_10N = "10n"
 const val THUNDERSTORM_DAY_11D = "11d"
 const val THUNDERSTORM_NIGHT_11N = "11n"
+
+const val CITY_NAME_DURATION = 600.toLong()
+const val WEATHER_DESCRIPTION_DURATION = 700.toLong()
+const val WEATHER_FORMAT_DURATION = 900.toLong()
+const val WEATHER_TEMP_DURATION = 800.toLong()

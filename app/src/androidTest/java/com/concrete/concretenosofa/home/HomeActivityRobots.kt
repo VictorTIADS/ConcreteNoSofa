@@ -11,6 +11,9 @@ import com.concrete.concretenosofa.utils.*
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.SocketPolicy
+import org.koin.core.KoinComponent
+import org.koin.core.context.loadKoinModules
+import org.koin.dsl.module
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -24,18 +27,22 @@ fun act(func: HomeActivityAct.() -> Unit) =
 fun assert(func: HomeActivityAssert.() -> Unit) =
     HomeActivityAssert().apply { func() }
 
-class HomeActivityArrange(val mockWebServer: MockWebServer) {
-
-    companion object {
-        const val WITH_SUCCESS_REQUEST = 200
-        const val WITH_ERROR_REQUEST = 404
-        const val WITH_DELAY = 10
-        const val TEN_SECONDS = 10.toLong()
-    }
+class HomeActivityArrange(val mockWebServer: MockWebServer) : KoinComponent {
 
     fun launchActivity() {
         ActivityScenario.launch(HomeActivity::class.java)
+    }
 
+    fun mockWelcomeInfo(month: Int, hour: Int){
+        val calendar = Calendar.getInstance()
+        calendar.set(2020, month,1, hour,1)
+        loadKoinModules(
+            module {
+                factory(override = true) { calendar }
+                factory(override = true) {
+                    WelcomeInfoServices(ApplicationProvider.getApplicationContext(),get()) }
+            }
+        )
     }
 
     fun mockRequest(

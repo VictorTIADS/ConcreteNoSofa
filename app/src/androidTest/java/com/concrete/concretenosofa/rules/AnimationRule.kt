@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.utils
+package com.concrete.concretenosofa.rules
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
