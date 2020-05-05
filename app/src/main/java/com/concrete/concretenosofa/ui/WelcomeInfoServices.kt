@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.repository
+package com.concrete.concretenosofa.ui
 
 import android.content.Context
 import com.concrete.concretenosofa.R

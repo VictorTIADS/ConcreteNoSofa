@@ -23,6 +23,9 @@ class HomeActivityTest {
     @get:Rule
     val mockWebServer = MockWebServerRule()
 
+    @get:Rule
+    val animationRule = AnimationRule()
+
     @Test
     fun givenScreenIsLoading_whenOpenHomeActivity_shouldShowLoading() {
         arrange {

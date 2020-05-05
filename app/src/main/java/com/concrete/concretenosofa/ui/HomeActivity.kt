@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import com.concrete.concretenosofa.R
 import com.concrete.concretenosofa.extensions.*
 import com.concrete.concretenosofa.models.*
-import com.concrete.concretenosofa.repository.WelcomeInfoServices
 import com.concrete.concretenosofa.utils.*
 import com.concrete.concretenosofa.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
@@ -31,15 +30,19 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setObservable() {
         viewModel.weatherInfoObservable.observe(this, Observer {
-            when(it){
-                is Loading -> {
+            when(it.status){
+               BaseModel.Companion.STATUS.LOADING -> {
                     showLoading()
                 }
-                is Succes -> {
+                BaseModel.Companion.STATUS.SUCCESS-> {
                     hideLoading()
-                    setupWeatherInfo(it.data)
+                    it.data?.let { data ->
+                        setupWeatherInfo(data)
+                    } ?: run {
+                        setupError()
+                    }
                 }
-                is Error -> {
+                BaseModel.Companion.STATUS.ERROR -> {
                     hideLoading()
                     setupError()
                 }

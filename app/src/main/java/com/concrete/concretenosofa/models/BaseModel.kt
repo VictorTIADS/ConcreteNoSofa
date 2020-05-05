@@ -1,6 +1,6 @@
 package com.concrete.concretenosofa.models
 
-data class BaseModel<T>(var data: T?, val status: STATUS,val message:String?) {
+data class BaseModel<T>(val status: STATUS, var data: T? = null, val message:String? = null) {
     companion object {
         enum class STATUS {
             LOADING, SUCCESS, ERROR

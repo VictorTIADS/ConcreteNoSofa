@@ -3,18 +3,20 @@ package com.concrete.concretenosofa.viewmodel
 import androidx.lifecycle.*
 import com.concrete.concretenosofa.R
 import com.concrete.concretenosofa.models.*
+import com.concrete.concretenosofa.repository.Services
 import com.concrete.concretenosofa.repository.ServicesRepository
 import com.concrete.concretenosofa.utils.*
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HomeViewModel(
-    private val services: ServicesRepository
+    private val services: Services
 ) : ViewModel(), LifecycleObserver {
 
-    private val weatherInfo = MutableLiveData<ViewState>()
-    val weatherInfoObservable: LiveData<ViewState>
+    private val weatherInfo = MutableLiveData<BaseModel<WeatherRequestResponse>>()
+    val weatherInfoObservable: LiveData<BaseModel<WeatherRequestResponse>>
         get() = weatherInfo
 
 
@@ -23,23 +25,10 @@ class HomeViewModel(
     }
 
     fun fetchWeatherInfo() {
-        weatherInfo.value = Loading()
+        weatherInfo.postValue(BaseModel(BaseModel.Companion.STATUS.LOADING))
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val response = services.getWeatherInfo()
-
-                if (response.isSuccessful) {
-                    response.body()?.let {
-                        weatherInfo.postValue(Succes(it))
-                    } ?: kotlin.run {
-                        weatherInfo.postValue(Error())
-                    }
-
-                } else {
-                    weatherInfo.postValue(Error())
-                }
-
-            }
+            val response = services.getWeatherInfo()
+            weatherInfo.postValue(response)
         }
     }
 

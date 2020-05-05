@@ -1,21 +1,24 @@
 package com.concrete.concretenosofa.home
 
 import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.ApplicationProvider
 import br.com.concretesolutions.kappuccino.assertions.VisibilityAssertions.displayed
 import br.com.concretesolutions.kappuccino.actions.ClickActions.click
 import com.concrete.concretenosofa.R
 import com.concrete.concretenosofa.ui.HomeActivity
+import com.concrete.concretenosofa.ui.WelcomeInfoServices
 import com.concrete.concretenosofa.utils.*
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.SocketPolicy
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 
 fun HomeActivityTest.arrange(func: HomeActivityArrange.() -> Unit) =
     HomeActivityArrange(mockWebServer.mock).apply { func() }
 
-fun act(func:HomeActivityAct.() -> Unit) =
+fun act(func: HomeActivityAct.() -> Unit) =
     HomeActivityAct().apply { func() }
 
 fun assert(func: HomeActivityAssert.() -> Unit) =
@@ -31,11 +34,8 @@ class HomeActivityArrange(val mockWebServer: MockWebServer) {
     }
 
     fun launchActivity() {
-        val scenario =
-            ActivityScenario.launch(HomeActivity::class.java)
-        scenario.onActivity {
-            it.setTheme(R.style.Theme_AppCompat_NoActionBar)
-        }
+        ActivityScenario.launch(HomeActivity::class.java)
+
     }
 
     fun mockRequest(
@@ -66,12 +66,11 @@ class HomeActivityArrange(val mockWebServer: MockWebServer) {
 
         )
     }
-
 }
 
-class HomeActivityAct{
+class HomeActivityAct {
 
-    fun clickOnTryAgain(){
+    fun clickOnTryAgain() {
         click {
             id(R.id.homeButtonTryAgain)
         }
@@ -104,26 +103,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherIconCorrect(iconCode: String) {
-        when (iconCode){
-            CLEAR_SKY_DAY_01D -> displayed { image(R.drawable.ic_01d) }
-            CLEAR_SKY_NIGHT_01N -> displayed { image(R.drawable.ic_01n) }
-            FEW_CLOUDS_DAY_02D -> displayed { image(R.drawable.ic_02d) }
-            FEW_CLOUDS_NIGHT_02N -> displayed { image(R.drawable.ic_02n) }
-            SCATTERED_CLOUDS_DAY_3D -> displayed { image(R.drawable.ic_03d) }
-            SCATTERED_CLOUDS_NIGHT_3N -> displayed { image(R.drawable.ic_03n) }
-            BROKEN_CLOUDS_DAY_4D -> displayed { image(R.drawable.ic_03d) }
-            BROKEN_CLOUDS_NIGHT_4N -> displayed { image(R.drawable.ic_03n) }
-            SHOWER_RAIN_DAY_9D -> displayed { image(R.drawable.ic_09d) }
-            SHOWER_RAIN_NIGHT_9N -> displayed { image(R.drawable.ic_09n) }
-            RAIN_DAY_10D -> displayed { image(R.drawable.ic_10d) }
-            RAIN_NIGHT_10N -> displayed { image(R.drawable.ic_10n) }
-            THUNDERSTORM_DAY_11D -> displayed { image(R.drawable.ic_11d) }
-            THUNDERSTORM_NIGHT_11N -> displayed { image(R.drawable.ic_11n) }
-        }
-    }
-
-    fun isWeatherStateClearSkyDay(){
+    fun isWeatherStateClearSkyDay() {
         displayed {
             image(R.drawable.ic_01d)
             text("Recife")
@@ -133,7 +113,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateClearSkyNight(){
+    fun isWeatherStateClearSkyNight() {
         displayed {
             image(R.drawable.ic_01n)
             text("Recife")
@@ -143,7 +123,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateFewCloudsDay(){
+    fun isWeatherStateFewCloudsDay() {
         displayed {
             image(R.drawable.ic_02d)
             text("Recife")
@@ -153,7 +133,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateFewCloudsNight(){
+    fun isWeatherStateFewCloudsNight() {
         displayed {
             image(R.drawable.ic_02n)
             text("Recife")
@@ -163,7 +143,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateScatteredCloudsDay(){
+    fun isWeatherStateScatteredCloudsDay() {
         displayed {
             image(R.drawable.ic_03d)
             text("Recife")
@@ -173,7 +153,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateScatteredCloudsNight(){
+    fun isWeatherStateScatteredCloudsNight() {
         displayed {
             image(R.drawable.ic_03n)
             text("Recife")
@@ -183,7 +163,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateBrokenCloudsDay(){
+    fun isWeatherStateBrokenCloudsDay() {
         displayed {
             image(R.drawable.ic_03d)
             text("Recife")
@@ -193,7 +173,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateBrokenCloudsNight(){
+    fun isWeatherStateBrokenCloudsNight() {
         displayed {
             image(R.drawable.ic_03n)
             text("Recife")
@@ -203,7 +183,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateShowerRainDay(){
+    fun isWeatherStateShowerRainDay() {
         displayed {
             image(R.drawable.ic_09d)
             text("Recife")
@@ -213,7 +193,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateShowerRainNight(){
+    fun isWeatherStateShowerRainNight() {
         displayed {
             image(R.drawable.ic_09n)
             text("Recife")
@@ -223,7 +203,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateRainDay(){
+    fun isWeatherStateRainDay() {
         displayed {
             image(R.drawable.ic_10d)
             text("Recife")
@@ -233,7 +213,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateRainNight(){
+    fun isWeatherStateRainNight() {
         displayed {
             image(R.drawable.ic_10n)
             text("Recife")
@@ -243,7 +223,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateThunderstormDay(){
+    fun isWeatherStateThunderstormDay() {
         displayed {
             image(R.drawable.ic_11d)
             text("Recife")
@@ -253,7 +233,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isWeatherStateThunderstormNight(){
+    fun isWeatherStateThunderstormNight() {
         displayed {
             image(R.drawable.ic_11n)
             text("Recife")
@@ -262,9 +242,6 @@ class HomeActivityAssert {
             text("ºC")
         }
     }
-
-
-
 
 
 }

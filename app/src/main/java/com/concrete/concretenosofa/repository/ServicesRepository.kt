@@ -1,18 +1,36 @@
 package com.concrete.concretenosofa.repository
 
-import androidx.lifecycle.MutableLiveData
 import com.concrete.concretenosofa.models.*
 import com.concrete.concretenosofa.network.RetrofitConfig
-import com.concrete.concretenosofa.utils.weatherMock
 import org.koin.core.KoinComponent
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class ServicesRepository(private val retrofitConfig: RetrofitConfig) : KoinComponent, Services {
 
-    override suspend fun getWeatherInfo(): Response<WeatherRequestResponse> {
-        return retrofitConfig.retrofitRequest().getWeather()
-    }
+    override suspend fun getWeatherInfo(): BaseModel<WeatherRequestResponse> {
 
+        lateinit var resultRequest: BaseModel<WeatherRequestResponse>
+
+        val result = runCatching {
+
+            val response = retrofitConfig.retrofitRequest().getWeather()
+
+            resultRequest = if (response.isSuccessful) {
+
+                response.body()?.let {
+                    return BaseModel(BaseModel.Companion.STATUS.SUCCESS, it)
+                } ?: run {
+                    return BaseModel(BaseModel.Companion.STATUS.ERROR)
+                }
+
+            } else {
+                return BaseModel(BaseModel.Companion.STATUS.ERROR)
+            }
+        }
+        return if (result.isFailure) {
+            BaseModel(BaseModel.Companion.STATUS.ERROR)
+        } else {
+            resultRequest
+        }
+
+    }
 }

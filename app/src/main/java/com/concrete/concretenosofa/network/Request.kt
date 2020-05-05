@@ -1,6 +1,7 @@
 package com.concrete.concretenosofa.network
 
 import com.concrete.concretenosofa.models.WeatherRequestResponse
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET

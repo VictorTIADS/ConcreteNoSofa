@@ -1,8 +1,9 @@
 package com.concrete.concretenosofa.di
 
 import com.concrete.concretenosofa.network.RetrofitConfig
+import com.concrete.concretenosofa.repository.Services
 import com.concrete.concretenosofa.repository.ServicesRepository
-import com.concrete.concretenosofa.repository.WelcomeInfoServices
+import com.concrete.concretenosofa.ui.WelcomeInfoServices
 import com.concrete.concretenosofa.viewmodel.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -14,7 +15,7 @@ val viewModels = module {
 
 val network = module {
     single { RetrofitConfig() }
-    single { ServicesRepository(get()) }
+    single { ServicesRepository(get()) as Services}
 }
 
 val utils = module {
