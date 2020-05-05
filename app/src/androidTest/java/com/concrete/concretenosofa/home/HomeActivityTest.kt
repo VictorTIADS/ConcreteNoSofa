@@ -45,16 +45,103 @@ class HomeActivityTest {
     }
 
     @Test
-    fun givenScreenHasLoaded_whenOpenHomeActivity_shouldShowWelcomeInfo() {
+    fun whenScreenError_whenCloseAndOpenTheAppA_shouldShowError(){
+
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsMorning_shouldShowDayBackgroundColor() {
         arrange {
-            mockWelcomeInfo(Calendar.JANUARY,
-                NIGHT_HOUR
-            )
+            mockWelcomeInfo(MORNING_TIME)
             mockRequest()
             launchActivity()
         }
         assert {
-            isWelcomeInfoDisplayed()
+            isDayBrackgroundDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsNight_shouldShowNightBackgroundColor() {
+        arrange {
+            mockWelcomeInfo(NIGHT_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isNightBrackgroundDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsMorning_shouldShowGoodMorning() {
+        arrange {
+            mockWelcomeInfo(MORNING_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isGoodMorningDisplay()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsEvening_shouldShowGoodMorning() {
+        arrange {
+            mockWelcomeInfo(EVENING_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isGoodEveningDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsNight_shouldShowGoodNight() {
+        arrange {
+            mockWelcomeInfo(NIGHT_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isGoodNightDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsApril_shouldShowCorrectDate() {
+        arrange {
+            mockWelcomeInfo(month = Calendar.APRIL)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isLongDateDisplayedWithMonth("abril")
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsDecember_shouldShowCorrectDate() {
+        arrange {
+            mockWelcomeInfo(month = Calendar.DECEMBER)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isLongDateDisplayedWithMonth("dezembro")
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsJuly_shouldShowCorrectDate() {
+        arrange {
+            mockWelcomeInfo(month = Calendar.JULY)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isLongDateDisplayedWithMonth("julho")
         }
     }
 
