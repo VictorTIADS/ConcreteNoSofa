@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvDialogOptionsContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDialogOptionsTitle"
+
+        android:textSize="24sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@id/ivDialogOptionsCloseButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Bem-vindos ao gerador de palavras aleatórias em português, com ele pode criar palavras à sorte para fazer jogos tipo Pictionary." />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDialogOptionsCloseButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDialogOptionsTitle"
+        app:srcCompat="@drawable/ic_circular_close_light" />
+
+    <TextView
+        android:id="@+id/tvDialogOptionsSubTitle"
+        android:layout_width="0dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_m"
+        android:text="Cada vez que pulse o botão 'Nova palavra', criar-se-á uma palavra aleatória diferente."
+        app:layout_constraintEnd_toEndOf="@id/ivDialogOptionsCloseButton"
+        app:layout_constraintStart_toStartOf="@id/tvDialogOptionsTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvDialogOptionsTitle" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

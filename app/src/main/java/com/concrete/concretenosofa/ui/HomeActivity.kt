@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import com.concrete.concretenosofa.R
 import com.concrete.concretenosofa.extensions.*
 import com.concrete.concretenosofa.models.*
+import com.concrete.concretenosofa.components.showOptionsBottomSheet
 import com.concrete.concretenosofa.utils.*
 import com.concrete.concretenosofa.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
@@ -26,6 +27,12 @@ class HomeActivity : AppCompatActivity() {
 
         setupWelcomeTexts(welcomeInfoServices.getWelcomeInfo())
         setObservable()
+
+        homeIconWeather.setOnClickListener {
+            this.showOptionsBottomSheet {
+
+            }
+        }
     }
 
     private fun setObservable() {

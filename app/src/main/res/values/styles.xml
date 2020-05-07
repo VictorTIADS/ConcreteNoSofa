@@ -15,7 +15,7 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
-    <style name="TextSubtitle" >
+    <style name="TextSubtitle">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
@@ -47,5 +47,19 @@
         <item name="android:textSize">16dp</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/background_bottom_sheet_dialog</item>
+    </style>
+
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="OptionsBottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
 
 </resources>
