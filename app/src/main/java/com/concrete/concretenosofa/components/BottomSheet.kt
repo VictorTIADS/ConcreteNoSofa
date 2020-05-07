@@ -19,7 +19,7 @@ class BottomSheet (private val onBuilt: BottomSheet.() -> Unit) : BottomSheetDia
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return BottomSheetDialog(requireContext(),
-            R.style.OptionsBottomSheetDialogTheme
+            R.style.BottomSheetTheme
         )
     }
 

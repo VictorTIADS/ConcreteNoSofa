@@ -48,18 +48,17 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/background_bottom_sheet_dialog</item>
+    <style name="BottomSheetBackground" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_background</item>
     </style>
 
 
-    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+    <style name="BottomSheetTheme" parent="@style/Theme.Design.Light.BottomSheetDialog">
         <item name="android:windowIsFloating">false</item>
-        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="bottomSheetStyle">@style/BottomSheetBackground</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="OptionsBottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
 
 
 </resources>
