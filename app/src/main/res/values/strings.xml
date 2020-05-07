@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ConcreteNoSofa</string>
     <string name="celcius">ºC</string>
+    <string name="detail_weather_city">Detalhe do clima em %s</string>
     <string name="home_salutation_morning">Bom Dia</string>
     <string name="home_salutation_evening">Boa Tarde</string>
     <string name="home_salutation_night">Boa Noite</string>

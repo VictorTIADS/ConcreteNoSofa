@@ -1,7 +1,7 @@
-package com.concrete.concretenosofa.utils
+package com.concrete.concretenosofa
 
-import android.view.inputmethod.CorrectionInfo
 import com.concrete.concretenosofa.models.*
+import retrofit2.Response
 
 private val coord = CoordResponse(1.0, 1.0)
 private val weather = WeatherResponse(1, "main", "description", "03d")
@@ -26,3 +26,9 @@ val weatherMock = WeatherRequestResponse(
     "Recife",
     30
 )
+
+fun mockBaseModelSuccessWeatherInfo() = BaseModel(BaseModel.Companion.STATUS.SUCCESS,
+    weatherMock
+)
+
+fun mockWeatherSuccessResponse() = Response.success(weatherMock)

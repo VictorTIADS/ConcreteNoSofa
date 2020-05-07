@@ -1,21 +1,15 @@
 package com.concrete.concretenosofa.home
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import br.com.concretesolutions.kappuccino.utils.doWait
-import com.concrete.concretenosofa.R
-import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_DELAY
-import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_ERROR_REQUEST
-import com.concrete.concretenosofa.home.HomeActivityArrange.Companion.WITH_SUCCESS_REQUEST
-import com.concrete.concretenosofa.models.WelcomeInfo
-import com.concrete.concretenosofa.server.MockWebServerRule
+import com.concrete.concretenosofa.rules.AnimationRule
+import com.concrete.concretenosofa.rules.KoinRule
+import com.concrete.concretenosofa.rules.MockWebServerRule
+import com.concrete.concretenosofa.testUtils.*
 import com.concrete.concretenosofa.utils.*
-import io.mockk.every
-import io.mockk.mockkClass
-import io.mockk.mockkConstructor
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest {
@@ -25,6 +19,9 @@ class HomeActivityTest {
 
     @get:Rule
     val animationRule = AnimationRule()
+
+    @get:Rule
+    val koinRule = KoinRule()
 
     @Test
     fun givenScreenIsLoading_whenOpenHomeActivity_shouldShowLoading() {
@@ -48,13 +45,103 @@ class HomeActivityTest {
     }
 
     @Test
-    fun givenScreenHasLoaded_whenOpenHomeActivity_shouldShowWelcomeInfo() {
+    fun whenScreenError_whenCloseAndOpenTheAppA_shouldShowError(){
+
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsMorning_shouldShowDayBackgroundColor() {
         arrange {
+            mockWelcomeInfo(MORNING_TIME)
             mockRequest()
             launchActivity()
         }
         assert {
-            isWelcomeInfoDisplayed()
+            isDayBrackgroundDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsNight_shouldShowNightBackgroundColor() {
+        arrange {
+            mockWelcomeInfo(NIGHT_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isNightBrackgroundDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsMorning_shouldShowGoodMorning() {
+        arrange {
+            mockWelcomeInfo(MORNING_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isGoodMorningDisplay()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsEvening_shouldShowGoodMorning() {
+        arrange {
+            mockWelcomeInfo(EVENING_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isGoodEveningDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsNight_shouldShowGoodNight() {
+        arrange {
+            mockWelcomeInfo(NIGHT_TIME)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isGoodNightDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsApril_shouldShowCorrectDate() {
+        arrange {
+            mockWelcomeInfo(month = Calendar.APRIL)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isLongDateDisplayedWithMonth("abril")
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsDecember_shouldShowCorrectDate() {
+        arrange {
+            mockWelcomeInfo(month = Calendar.DECEMBER)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isLongDateDisplayedWithMonth("dezembro")
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenIsJuly_shouldShowCorrectDate() {
+        arrange {
+            mockWelcomeInfo(month = Calendar.JULY)
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isLongDateDisplayedWithMonth("julho")
         }
     }
 
@@ -137,7 +224,6 @@ class HomeActivityTest {
         }
         assert {
             isWeatherStateBrokenCloudsDay()
-
         }
     }
 
