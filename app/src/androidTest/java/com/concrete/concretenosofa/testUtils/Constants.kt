@@ -6,5 +6,5 @@ const val WITH_DELAY = 10
 const val TEN_SECONDS = 10.toLong()
 
 const val MORNING_TIME = 6
-const val EVENING_TIME = 3
-const val NIGHT_TIME = 20
+const val EVENING_TIME = 15
+const val NIGHT_TIME = 22

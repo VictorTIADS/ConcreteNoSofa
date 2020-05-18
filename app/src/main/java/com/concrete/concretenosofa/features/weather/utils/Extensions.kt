@@ -1,11 +1,8 @@
-package com.concrete.concretenosofa.extensions
+package com.concrete.concretenosofa.features.weather.utils
 
-import android.content.Context
 import android.view.View
-import com.concrete.concretenosofa.R
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
-import java.util.*
 
 fun Double.toTempFormat() = this.toString().replace(".0","")
 

@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.HomeActivity">
+        <activity android:name=".features.weather.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

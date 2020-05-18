@@ -2,6 +2,9 @@
     <string name="app_name">ConcreteNoSofa</string>
     <string name="celcius">ºC</string>
     <string name="detail_weather_city">Detalhe do clima em %s</string>
+    <string name="feels_like_value">%dºC</string>
+    <string name="wind_speed_value">%d Km</string>
+    <string name="humidity_value">%d%%</string>
     <string name="home_salutation_morning">Bom Dia</string>
     <string name="home_salutation_evening">Boa Tarde</string>
     <string name="home_salutation_night">Boa Noite</string>
@@ -19,4 +22,9 @@
     <string name="moth_nov">novembro</string>
     <string name="moth_dec">dezembro</string>
     <string name="moth_jan">janeiro</string>
+    <string name="bottom_sheet_subtitle">Aqui temos algumas informações detalhadas sobre o clima:</string>
+    <string name="feels_like">Sensação términca:</string>
+    <string name="humidity">Humidade:</string>
+    <string name="wind_speed">Velocidade do Vento:</string>
+    <string name="more_details">Mais detalhes</string>
 </resources>

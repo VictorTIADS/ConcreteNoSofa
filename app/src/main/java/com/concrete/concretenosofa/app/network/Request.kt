@@ -1,6 +1,6 @@
-package com.concrete.concretenosofa.network
+package com.concrete.concretenosofa.app.network
 
-import com.concrete.concretenosofa.models.WeatherRequestResponse
+import com.concrete.concretenosofa.features.weather.model.WeatherRequestResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

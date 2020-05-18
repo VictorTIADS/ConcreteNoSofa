@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.models
+package com.concrete.concretenosofa.features.weather.model
 
 data class SysResponse(
     val type: Int,

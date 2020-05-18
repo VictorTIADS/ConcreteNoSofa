@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.di
+package com.concrete.concretenosofa.app.di
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

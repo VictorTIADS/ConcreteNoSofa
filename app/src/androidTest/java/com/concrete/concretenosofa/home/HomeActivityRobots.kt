@@ -9,9 +9,9 @@ import com.concrete.concretenosofa.testUtils.MORNING_TIME
 import com.concrete.concretenosofa.testUtils.MockedJsonReader
 import com.concrete.concretenosofa.testUtils.WITH_DELAY
 import com.concrete.concretenosofa.testUtils.WITH_SUCCESS_REQUEST
-import com.concrete.concretenosofa.ui.HomeActivity
-import com.concrete.concretenosofa.ui.WelcomeInfoServices
-import com.concrete.concretenosofa.utils.*
+import com.concrete.concretenosofa.features.weather.HomeActivity
+import com.concrete.concretenosofa.features.weather.utils.WelcomeInfoServices
+import com.concrete.concretenosofa.features.weather.utils.CLEAR_SKY_DAY_01D
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.SocketPolicy
@@ -37,14 +37,18 @@ class HomeActivityArrange(val mockWebServer: MockWebServer) : KoinComponent {
         ActivityScenario.launch(HomeActivity::class.java)
     }
 
-    fun mockWelcomeInfo(hour: Int = MORNING_TIME, month: Int = Calendar.JANUARY){
+    fun mockWelcomeInfo(hour: Int = MORNING_TIME, month: Int = Calendar.JANUARY) {
         val calendar = Calendar.getInstance()
-        calendar.set(2020, month,1, hour,1)
+        calendar.set(2020, month, 1, hour, 1)
         loadKoinModules(
             module {
                 factory(override = true) { calendar }
                 factory(override = true) {
-                    WelcomeInfoServices(ApplicationProvider.getApplicationContext(),get()) }
+                    WelcomeInfoServices(
+                        ApplicationProvider.getApplicationContext(),
+                        get()
+                    )
+                }
             }
         )
     }
@@ -87,6 +91,12 @@ class HomeActivityAct {
         }
     }
 
+    fun clickOnSeeModeDetail() {
+        click {
+            id(R.id.homeWeatherDetail)
+        }
+    }
+
 }
 
 class HomeActivityAssert {
@@ -107,7 +117,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isLongDateDisplayedWithMonth(month: String){
+    fun isLongDateDisplayedWithMonth(month: String) {
         displayed {
             allOf {
                 id(R.id.homeSubTitleDate)
@@ -134,7 +144,7 @@ class HomeActivityAssert {
         }
     }
 
-    fun isGoodMorningDisplay(){
+    fun isGoodMorningDisplay() {
         displayed {
             allOf {
                 id(R.id.homeTitleWelcome)
@@ -143,13 +153,13 @@ class HomeActivityAssert {
         }
     }
 
-    fun isDayBrackgroundDisplayed(){
+    fun isDayBrackgroundDisplayed() {
         displayed {
             background(R.color.colorBackgroundDay)
         }
     }
 
-    fun isNightBrackgroundDisplayed(){
+    fun isNightBrackgroundDisplayed() {
         displayed {
             background(R.color.colorBackgroundNight)
         }
@@ -292,6 +302,63 @@ class HomeActivityAssert {
             text("trovoada")
             text("25")
             text("ºC")
+        }
+    }
+
+    fun isMoreDetailOptionDisplayed() {
+        displayed {
+            allOf {
+                id(R.id.homeWeatherDetail)
+                text("Mais detalhes")
+            }
+        }
+    }
+
+    fun isBottomSheetDisplayed() {
+        displayed {
+            id(R.id.bottomSheetContainer)
+        }
+    }
+
+    fun isFeelsLikeDisplayed() {
+        displayed {
+            parent(R.id.bottomSheetContainer) {
+                id(R.id.bsFeelsLike)
+                id(R.id.bsFeelsLikeValue)
+                text("Sensação términca:")
+                text("32ºC")
+            }
+        }
+    }
+
+    fun isHumidityDisplayed() {
+        displayed {
+            parent(R.id.bottomSheetContainer) {
+                id(R.id.bsHumidity)
+                id(R.id.bsHumidityValue)
+                text("Humidade:")
+                text("66%")
+            }
+        }
+    }
+
+    fun isWindSpeedDisplayed() {
+        displayed {
+            parent(R.id.bottomSheetContainer) {
+                id(R.id.bsWindSpeed)
+                id(R.id.bsWindSpeedValue)
+                text("Velocidade do Vento:")
+                text("6 Km")
+            }
+        }
+    }
+
+    fun isBottomSheetWithCorrectCityNameDisplayed() {
+        displayed {
+            parent(R.id.bottomSheetContainer) {
+                id(R.id.bottomSheetTitle)
+                text("Detalhe do clima em Recife")
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.network
+package com.concrete.concretenosofa.app.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
