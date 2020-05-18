@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.utils
+package com.concrete.concretenosofa.features.weather.utils
 
 const val CLEAR_SKY_DAY_01D = "01d"
 const val CLEAR_SKY_NIGHT_01N = "01n"

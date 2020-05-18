@@ -1,15 +1,19 @@
-package com.concrete.concretenosofa.ui
+package com.concrete.concretenosofa.features.weather.utils
 
 import android.content.Context
 import com.concrete.concretenosofa.R
-import com.concrete.concretenosofa.models.WelcomeInfo
-import com.concrete.concretenosofa.utils.*
+import com.concrete.concretenosofa.features.weather.model.WelcomeInfo
+import com.concrete.concretenosofa.features.weather.utils.*
 import java.util.*
 
 class WelcomeInfoServices(private val context: Context, private val calendar: Calendar) {
 
     fun getWelcomeInfo() =
-        WelcomeInfo(getSalutation(), getLogStringDate(), getBackgroundColor())
+        WelcomeInfo(
+            getSalutation(),
+            getLogStringDate(),
+            getBackgroundColor()
+        )
 
     private fun getSalutation() =
         when {

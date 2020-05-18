@@ -1,11 +1,12 @@
 package com.concrete.concretenosofa.home
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import br.com.concretesolutions.kappuccino.utils.doWait
+import com.concrete.concretenosofa.features.weather.utils.*
 import com.concrete.concretenosofa.rules.AnimationRule
 import com.concrete.concretenosofa.rules.KoinRule
 import com.concrete.concretenosofa.rules.MockWebServerRule
 import com.concrete.concretenosofa.testUtils.*
-import com.concrete.concretenosofa.utils.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -42,11 +43,6 @@ class HomeActivityTest {
         assert {
             isErrorDisplayed()
         }
-    }
-
-    @Test
-    fun whenScreenError_whenCloseAndOpenTheAppA_shouldShowError(){
-
     }
 
     @Test
@@ -160,6 +156,7 @@ class HomeActivityTest {
     @Test
     fun givenClearSkyNight_whenOpenHomeActivity_shouldShowCorrectInformation() {
         arrange {
+            mockWelcomeInfo(NIGHT_TIME)
             mockRequest(weatherState = CLEAR_SKY_NIGHT_01N)
             launchActivity()
         }
@@ -184,6 +181,7 @@ class HomeActivityTest {
     @Test
     fun givenFewCloudsNight_whenOpenHomeActivity_shouldShowCorrectInformation() {
         arrange {
+            mockWelcomeInfo(NIGHT_TIME)
             mockRequest(weatherState = FEW_CLOUDS_NIGHT_02N)
             launchActivity()
         }
@@ -207,6 +205,7 @@ class HomeActivityTest {
     @Test
     fun givenScatteredCloudsNight_whenOpenHomeActivity_shouldShowCorrectInformation() {
         arrange {
+            mockWelcomeInfo(NIGHT_TIME)
             mockRequest(weatherState = SCATTERED_CLOUDS_NIGHT_3N)
             launchActivity()
         }
@@ -230,6 +229,7 @@ class HomeActivityTest {
     @Test
     fun givenBrokenCloudsNight_whenOpenHomeActivity_shouldShowCorrectInformation() {
         arrange {
+            mockWelcomeInfo(NIGHT_TIME)
             mockRequest(weatherState = BROKEN_CLOUDS_NIGHT_4N)
             launchActivity()
         }
@@ -254,6 +254,7 @@ class HomeActivityTest {
     @Test
     fun givenShowerRainNight_whenOpenHomeActivity_shouldShowCorrectInformation() {
         arrange {
+            mockWelcomeInfo(NIGHT_TIME)
             mockRequest(weatherState = SHOWER_RAIN_NIGHT_9N)
             launchActivity()
         }
@@ -278,6 +279,7 @@ class HomeActivityTest {
     @Test
     fun givenRainNight_whenOpenHomeActivity_shouldShowCorrectInformation() {
         arrange {
+            mockWelcomeInfo(NIGHT_TIME)
             mockRequest(weatherState = RAIN_NIGHT_10N)
             launchActivity()
         }
@@ -301,6 +303,7 @@ class HomeActivityTest {
     @Test
     fun givenThunderstormNight_whenOpenHomeActivity_shouldShowCorrectInformation() {
         arrange {
+            mockWelcomeInfo(NIGHT_TIME)
             mockRequest(weatherState = THUNDERSTORM_NIGHT_11N)
             launchActivity()
         }
@@ -324,5 +327,88 @@ class HomeActivityTest {
             isWeatherStateClearSkyDay()
         }
     }
+
+    @Test
+    fun givenScreenHasLoaded_whenFetchWeather_shouldShowModeDetailOption() {
+        arrange {
+            mockRequest()
+            launchActivity()
+        }
+        assert {
+            isMoreDetailOptionDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenClickOnMoreDetailOption_shouldShowBottomSheet() {
+        arrange {
+            mockRequest()
+            launchActivity()
+        }
+        act {
+            clickOnSeeModeDetail()
+        }
+        assert {
+            isBottomSheetDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenBottomSheetIsOpen_shouldShowFeelsLike() {
+        arrange {
+            mockRequest()
+            launchActivity()
+        }
+        act {
+            clickOnSeeModeDetail()
+        }
+        assert {
+            isFeelsLikeDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenBottomSheetIsOpen_shouldHumidity() {
+        arrange {
+            mockRequest()
+            launchActivity()
+        }
+        act {
+            clickOnSeeModeDetail()
+
+        }
+        assert {
+            isHumidityDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenBottomSheetIsOpen_shouldShowWindSpeed() {
+        arrange {
+            mockRequest()
+            launchActivity()
+        }
+        act {
+            clickOnSeeModeDetail()
+        }
+        assert {
+            isWindSpeedDisplayed()
+        }
+    }
+
+    @Test
+    fun givenScreenHasLoaded_whenBottomSheetIsOpen_shouldShowBottomSheetTitleWithTheCityName() {
+        arrange {
+            mockRequest()
+            launchActivity()
+        }
+        act {
+            clickOnSeeModeDetail()
+        }
+        assert {
+            isBottomSheetWithCorrectCityNameDisplayed()
+        }
+    }
+
 
 }

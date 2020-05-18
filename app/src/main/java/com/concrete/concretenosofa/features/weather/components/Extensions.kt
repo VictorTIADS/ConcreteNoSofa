@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.components
+package com.concrete.concretenosofa.features.weather.components
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

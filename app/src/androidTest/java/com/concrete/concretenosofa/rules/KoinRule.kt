@@ -1,11 +1,11 @@
 package com.concrete.concretenosofa.rules
 
 import androidx.test.core.app.ApplicationProvider
-import com.concrete.concretenosofa.network.RetrofitConfig
-import com.concrete.concretenosofa.repository.Services
-import com.concrete.concretenosofa.repository.ServicesRepository
-import com.concrete.concretenosofa.ui.WelcomeInfoServices
-import com.concrete.concretenosofa.viewmodel.HomeViewModel
+import com.concrete.concretenosofa.app.network.RetrofitConfig
+import com.concrete.concretenosofa.features.weather.usecase.Services
+import com.concrete.concretenosofa.features.weather.usecase.GetWeather
+import com.concrete.concretenosofa.features.weather.utils.WelcomeInfoServices
+import com.concrete.concretenosofa.features.weather.HomeViewModel
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
@@ -22,7 +22,10 @@ val testKoinViewmodelModule = module {
 
 val testKoinNetworkModule = module {
     single { RetrofitConfig() }
-    single { ServicesRepository(get()) as Services }
+    single { GetWeather(
+        get()
+    ) as Services
+    }
 }
 
 val testKoinUtilsModule = module {

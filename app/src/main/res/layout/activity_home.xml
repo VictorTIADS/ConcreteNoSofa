@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/homeView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundDay"
-    tools:context=".ui.HomeActivity">
+    tools:context=".features.weather.HomeActivity">
 
     <LinearLayout
         android:id="@+id/homeContainerLoading"
@@ -28,8 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="gone"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,9 +38,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_g_g"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginTop="@dimen/space_g_g"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -83,114 +83,129 @@
                 android:textSize="16sp" />
 
         </LinearLayout>
-
-
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/homeContainerWelcome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/homeContainerWeather"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/homeTitleWelcome"
-            style="@style/TextTitle"
+        <LinearLayout
+            android:id="@+id/homeContainerWelcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/homeTitleWelcome"
+                style="@style/TextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_m"
+                android:layout_marginTop="@dimen/space_m"
+                tools:text="bom dia" />
+
+            <TextView
+                android:id="@+id/homeSubTitleDate"
+                style="@style/TextSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_m"
+                tools:text="2 de janeiro de 2020" />
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/homeIconWeather"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="44dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeContainerWelcome"
+            app:srcCompat="@drawable/ic_01d" />
+
+        <LinearLayout
+            android:id="@+id/homeContainerCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_m"
             android:layout_marginTop="@dimen/space_m"
-            tools:text="bom dia" />
+            android:visibility="gone"
+            android:background="@drawable/container_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeIconWeather">
+
+            <TextView
+                android:id="@+id/homeCityName"
+                style="@style/TextTitleBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="recife" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/homeSubTitleDate"
+            android:id="@+id/homeWeatherSubtitle"
+            style="@style/TextSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_pp"
+            android:layout_marginTop="@dimen/space_pp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/homeContainerCity"
+            app:layout_constraintTop_toBottomOf="@id/homeContainerCity"
+            tools:text="pouco nublado" />
+
+
+        <TextView
+            android:id="@+id/homeWeatherTemp"
+            style="@style/TextWeatherTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_m"
+            android:layout_marginTop="@dimen/space_g_g"
+            android:layout_marginBottom="@dimen/space_m"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/homeContainerCity"
+            app:layout_goneMarginBottom="@dimen/space_g"
+            tools:text="74" />
+
+        <TextView
+            android:id="@+id/homeWeatherFormat"
+            style="@style/TextWeatherTempFormat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_g_m"
+            android:text="@string/celcius"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/homeWeatherTemp"
+            app:layout_constraintTop_toTopOf="@id/homeWeatherTemp" />
+
+        <TextView
+            android:id="@+id/homeWeatherDetail"
             style="@style/TextSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_m"
-            tools:text="2 de janeiro de 2020" />
-    </LinearLayout>
+            android:text="@string/more_details"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/homeWeatherFormat"
+            app:layout_constraintTop_toBottomOf="@id/homeWeatherFormat" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/homeIconWeather"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="44dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeContainerWelcome"
-        app:srcCompat="@drawable/ic_01d" />
-
-    <LinearLayout
-        android:id="@+id/homeContainerCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_m"
-        android:layout_marginTop="@dimen/space_m"
-        android:background="@drawable/container_background"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeIconWeather">
-
-        <TextView
-            android:id="@+id/homeCityName"
-            style="@style/TextTitleBlack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="recife" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/homeWeatherSubtitle"
-        style="@style/TextSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_pp"
-        android:layout_marginTop="@dimen/space_pp"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@id/homeContainerCity"
-        app:layout_constraintTop_toBottomOf="@id/homeContainerCity"
-        tools:text="pouco nublado" />
-
-    <TextView
-        android:id="@+id/homeWeatherTemp"
-        style="@style/TextWeatherTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_m"
-        android:layout_marginTop="@dimen/space_g_g"
-        android:layout_marginBottom="@dimen/space_m"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/homeContainerCity"
-        app:layout_goneMarginBottom="@dimen/space_g"
-        tools:text="74" />
-
-    <TextView
-        android:id="@+id/homeWeatherFormat"
-        style="@style/TextWeatherTempFormat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_g_m"
-        android:text="@string/celcius"
-        android:visibility="gone"
-        app:layout_constraintStart_toEndOf="@id/homeWeatherTemp"
-        app:layout_constraintTop_toTopOf="@id/homeWeatherTemp" />
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ViewFlipper>
 
 
 

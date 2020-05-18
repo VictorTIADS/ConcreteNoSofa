@@ -1,8 +1,9 @@
-package com.concrete.concretenosofa.viewmodel
+package com.concrete.concretenosofa.features.weather
 
 import androidx.lifecycle.*
-import com.concrete.concretenosofa.models.*
-import com.concrete.concretenosofa.repository.Services
+import com.concrete.concretenosofa.features.weather.model.BaseModel
+import com.concrete.concretenosofa.features.weather.model.WeatherRequestResponse
+import com.concrete.concretenosofa.features.weather.usecase.Services
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -19,7 +20,6 @@ class HomeViewModel(
     }
 
     fun fetchWeatherInfo() {
-        weatherInfo.postValue(BaseModel(BaseModel.Companion.STATUS.LOADING))
         viewModelScope.launch {
             val response = services.getWeatherInfo()
             weatherInfo.postValue(response)

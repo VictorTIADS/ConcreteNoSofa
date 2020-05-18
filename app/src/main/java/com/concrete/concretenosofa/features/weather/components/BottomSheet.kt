@@ -1,4 +1,4 @@
-package com.concrete.concretenosofa.components
+package com.concrete.concretenosofa.features.weather.components
 
 import android.app.Dialog
 import android.os.Bundle
@@ -28,9 +28,29 @@ class BottomSheet (private val onBuilt: BottomSheet.() -> Unit) : BottomSheetDia
 
         onBuilt()
 
-
         ivDialogOptionsCloseButton.setOnClickListener {
             dismiss()
         }
     }
+
+    fun setTitleText(cityName: String){
+        bottomSheetTitle.text = getString(R.string.detail_weather_city, cityName)
+    }
+
+    fun setFeelsLikeValue(feelsLike: Double){
+        bsFeelsLikeValue.text =
+            getString(R.string.feels_like_value, feelsLike.toInt())
+    }
+
+    fun setHumidityValue(humidity: Double){
+        bsHumidityValue.text =
+            getString(R.string.humidity_value, humidity.toInt())
+    }
+
+    fun setWindSpeedValue(windSpeed: Double){
+        bsWindSpeedValue.text =
+            getString(R.string.wind_speed_value, windSpeed.toInt())
+    }
+
+
 }

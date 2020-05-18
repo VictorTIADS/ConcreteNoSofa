@@ -3,10 +3,10 @@ package com.concrete.concretenosofa.home
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.concrete.concretenosofa.mockBaseModelSuccessWeatherInfo
 import com.concrete.concretenosofa.mockWeatherSuccessResponse
-import com.concrete.concretenosofa.models.BaseModel
-import com.concrete.concretenosofa.models.WeatherRequestResponse
-import com.concrete.concretenosofa.network.RetrofitConfig
-import com.concrete.concretenosofa.repository.ServicesRepository
+import com.concrete.concretenosofa.features.weather.model.BaseModel
+import com.concrete.concretenosofa.features.weather.model.WeatherRequestResponse
+import com.concrete.concretenosofa.app.network.RetrofitConfig
+import com.concrete.concretenosofa.features.weather.usecase.GetWeather
 import com.concrete.concretenosofa.rules.CoroutineTestRule
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -24,7 +24,10 @@ class HomeRepositoryTest {
     val coroutineTestRule = CoroutineTestRule()
 
     val api = mockk<RetrofitConfig>()
-    val service = ServicesRepository(api)
+    val service =
+        GetWeather(
+            api
+        )
 
     @Test
     fun givenRepositorySuccessCall_whenCallGetWeatherInfo_shouldReturnBaseModelObjectCreated() {

@@ -8,9 +8,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/bottomSheetTitle"
-        android:textSize="24sp"
         android:layout_width="0dp"
-        tools:text="Detalhe do Clima em Recife"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
@@ -18,31 +16,94 @@
         android:ellipsize="end"
         android:maxLines="3"
         android:textColor="@android:color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@id/ivDialogOptionsCloseButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Detalhe do Clima em Recife" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivDialogOptionsCloseButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/bottomSheetTitle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bottomSheetTitle"
         app:layout_constraintTop_toTopOf="@id/bottomSheetTitle"
-        app:srcCompat="@drawable/ic_close" />
+        app:srcCompat="@drawable/ic_close_bottom_sheet" />
 
     <TextView
         android:id="@+id/tvDialogOptionsSubTitle"
         android:layout_width="0dp"
-        android:textColor="@android:color/darker_gray"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_m"
-        android:text="Cada vez que pulse o botão 'Nova palavra', criar-se-á uma palavra aleatória diferente."
+        android:text="@string/bottom_sheet_subtitle"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="@id/ivDialogOptionsCloseButton"
         app:layout_constraintStart_toStartOf="@id/bottomSheetTitle"
         app:layout_constraintTop_toBottomOf="@id/bottomSheetTitle" />
 
 
+    <TextView
+        android:id="@+id/bsFeelsLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_m"
+        android:text="@string/feels_like"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/tvDialogOptionsSubTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvDialogOptionsSubTitle" />
 
+    <TextView
+        android:id="@+id/bsFeelsLikeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tvDialogOptionsSubTitle"
+        app:layout_constraintTop_toTopOf="@id/bsFeelsLike"
+        tools:text="24 ºC" />
+
+    <TextView
+        android:id="@+id/bsHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_m"
+        android:text="@string/humidity"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/tvDialogOptionsSubTitle"
+        app:layout_constraintTop_toBottomOf="@id/bsFeelsLike" />
+
+    <TextView
+        android:id="@+id/bsHumidityValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tvDialogOptionsSubTitle"
+        app:layout_constraintTop_toTopOf="@id/bsHumidity"
+        tools:text="30 %" />
+
+
+    <TextView
+        android:id="@+id/bsWindSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_m"
+        android:text="@string/wind_speed"
+        android:textSize="20sp"
+        android:layout_marginBottom="@dimen/space_g"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvDialogOptionsSubTitle"
+        app:layout_constraintTop_toBottomOf="@id/bsHumidity" />
+
+    <TextView
+        android:id="@+id/bsWindSpeedValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tvDialogOptionsSubTitle"
+        app:layout_constraintTop_toTopOf="@id/bsWindSpeed"
+        tools:text="54 Km" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,9 @@
-package com.concrete.concretenosofa.models
+package com.concrete.concretenosofa.features.weather.model
 
-data class BaseModel<T>(val status: STATUS, var data: T? = null, val message:String? = null) {
+data class BaseModel<T>(val status: STATUS, var data: T? = null, val message: String? = null) {
     companion object {
         enum class STATUS {
-            LOADING, SUCCESS, ERROR
+            SUCCESS, ERROR
         }
     }
 }

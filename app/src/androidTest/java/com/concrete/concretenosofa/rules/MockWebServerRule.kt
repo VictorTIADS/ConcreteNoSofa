@@ -1,11 +1,9 @@
 package com.concrete.concretenosofa.rules
 
-import com.concrete.concretenosofa.network.RetrofitConfig.Companion.BASE_URL
-import okhttp3.mockwebserver.MockResponse
+import com.concrete.concretenosofa.app.network.RetrofitConfig.Companion.BASE_URL
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
-import java.util.concurrent.TimeUnit
 
 class MockWebServerRule : TestWatcher(){
 
