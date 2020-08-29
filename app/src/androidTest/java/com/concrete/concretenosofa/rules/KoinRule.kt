@@ -22,9 +22,10 @@ val testKoinViewmodelModule = module {
 
 val testKoinNetworkModule = module {
     single { RetrofitConfig() }
-    single { GetWeather(
-        get()
-    ) as Services
+    single {
+        GetWeather(
+            get()
+        ) as Services
     }
 }
 
@@ -40,26 +41,26 @@ val testKoinUtilsModule = module {
 
 class KoinRule() : TestRule {
     override fun apply(base: Statement?, description: Description?): Statement {
-       return object : Statement(){
-           override fun evaluate() {
-               try {
-                   startKoin {
-                       androidContext(ApplicationProvider.getApplicationContext())
-                       modules(
-                           listOf(
-                               testKoinViewmodelModule,
-                               testKoinNetworkModule,
-                               testKoinUtilsModule
-                           )
-                       )
-                   }
-                   base?.evaluate()
-               } finally {
-                   stopKoin()
-               }
-           }
+        return object : Statement() {
+            override fun evaluate() {
+                try {
+                    startKoin {
+                        androidContext(ApplicationProvider.getApplicationContext())
+                        modules(
+                            listOf(
+                                testKoinViewmodelModule,
+                                testKoinNetworkModule,
+                                testKoinUtilsModule
+                            )
+                        )
+                    }
+                    base?.evaluate()
+                } finally {
+                    stopKoin()
+                }
+            }
 
-       }
+        }
     }
 
 }

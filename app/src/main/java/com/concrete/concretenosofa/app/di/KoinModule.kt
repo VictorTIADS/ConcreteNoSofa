@@ -15,10 +15,7 @@ val viewModels = module {
 
 val network = module {
     single { RetrofitConfig() }
-    single { GetWeather(
-        get()
-    ) as Services
-    }
+    single { GetWeather(get()) as Services }
 }
 
 val utils = module {
